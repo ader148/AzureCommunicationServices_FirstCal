@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo llamada</title>
+</head>
+<body>
+    <h2>Ejemplo Azuro communication services</h2>
+
+    <p>Call state  <span style="font-weight: bold;" id="call-state">-</span></p>
+    <input id="destination-group-input" type="text" placeholder="url de coneccion" style="margin-bottom: 1em; width: 600px;">
+
+    <input id="displayName-input" type="text" placeholder="Escriba su nombre">
+
+    <div>
+        <button id="connect-button" type="button" disabled="false">
+            connectar con video
+        </button>
+
+        <button id="disconnect-button" type="button" disabled="true">
+            Desconectar
+        </button>
+    </div>
+
+    <div id="remoteConteiner">
+        <h2>Participantes de la llamada</h2>
+        <div id="remoteParticipants"></div>
+    </div>
+
+    <hr/>
+
+    <h2>Su Camara</h2>
+    <div id="selfVideo" style="width: 20%; height: 20%;"></div>
+
+    <script src="./bundle.js"></script>
+
+</body>
+</html>
