@@ -44,6 +44,9 @@ async function init(){
     const videoDevices = await deviceManager.getCameras();
     const videoDeviceInfo = videoDevices[0];
     localVideoStream = new LocalVideoStream(videoDeviceInfo);
+
+    destinationGroupElement.value = 
+        "https://teams.live.com/meet/9321560526637";
     
 }
 
