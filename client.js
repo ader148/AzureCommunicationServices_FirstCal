@@ -8,6 +8,9 @@ import {
 //import { AzureCommunicationTokenCredential, parseConnectionString } from '@azure/communication-common';
 import { AzureCommunicationTokenCredential } from '@azure/communication-common';
 
+import { setLogLevel } from '@azure/logger';
+setLogLevel('verbose');
+
 const connectButton = document.getElementById("connect-button");
 const disconnectButton = document.getElementById("disconnect-button");
 const callStateElement = document.getElementById("call-state");
@@ -28,9 +31,7 @@ async function init(){
     //optenemos el codigo de acceso con fetch
     const response = await fetch(
         //"url de funcion de azure"
-        "https://gettokenbex.azurewebsites.net/api/GetIdUserBex?code=hGQbdxCPI9NKShNOCAdekD6GOlyCMi20m86fRRpWoHXYVRCxLJyL0w=="
-        //"https://gettokenbex.azurewebsites.net/api/GetIdUserBex?code=DxrfdsC0SH/VoP1bMqyCtRgXkumDJFdvOfXx2hK7MoxYyxfdK5gnvQ=="
-        //"https://gettokenbex.azurewebsites.net/api/GetIdUserBex?code=DxrfdsC0SH/VoP1bMqyCtRgXkumDJFdvOfXx2hK7MoxYyxfdK5gnvQ=="
+        "https://gettokenbex.azurewebsites.net/api/GetIdUserBex?code=hGQbdxCPI9NKShNOCAdekD6GOlyCMi20m86fRRpWoHXYVRCxLJyL0w=="        
     ); 
 
     const responseJson = await response.json();
@@ -69,7 +70,16 @@ connectButton.addEventListener("click", async () => {
         videoOptions : { localVideoStreams : [localVideoStream]  },
     };
 
+    console.log("esta es la info");
+    console.log(destinationToCall);
+
+    console.log("esta es las opciones de llamada");
+    console.log(callOptions);
+
+    console.log("llego hasta aca clic button");
     call = callAgent.join(destinationToCall, callOptions);
+    //call = CallAgent.join(destinationToCall, callOptions);
+    console.log("paso call - clic button");
 
     call.on("stateChanged", () => {
         callStateElement.innerText= call.state;
@@ -135,6 +145,7 @@ async function showLocalFeed(){
 }
 
 async function setUpRemoteParticipant(participant){
+    console.log("llamado funcion setUpRemoteParticipant");
     let newParticipantContainer = document.getElementById("div");
     let newParticipantInfo = "<p> Muted: "+ participant.isMuted +"  </p>";
 
